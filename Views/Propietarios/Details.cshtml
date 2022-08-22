@@ -1,0 +1,60 @@
+@model inmoCabreraNet.Models.Propietario
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Propietario</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_dni)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_dni)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_fechanac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_fechanac)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_direc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_direc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_telef)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_telef)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pro_email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pro_email)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.pro_id  }) |
+    <a asp-action="Index">Back to List</a>
+</div>

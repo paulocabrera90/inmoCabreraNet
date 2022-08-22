@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using inmobiliaria.Models;
+using inmoCabreraNet.Models;
 
-namespace inmobiliaria.Controllers;
+namespace inmoCabreraNet.Controllers;
 
 public class HomeController : Controller
 {
