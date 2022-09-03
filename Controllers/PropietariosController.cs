@@ -54,7 +54,26 @@ namespace inmoCabreraNet.Controllers
 
         // GET: Propietarios/Edit/5
         public ActionResult Edit(int id){
-            return View();
+             try {
+                // TODO: Add update logic here
+
+                var prop = repo.FindByPrimaryKey(id);
+                if (prop.pro_id > 0)
+                { TempData["msg"] = "Se encontro.";
+                    return View(prop);
+                }
+                else
+                {
+                    TempData["msg"] = "No se encontró Propietario. Intente nuevamente.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Propietarios/Edit/5

@@ -80,6 +80,39 @@ namespace inmoCabreraNet.Models {
             }
             return res;
         }
+
+          public Propietario FindByPrimaryKey(int id) {
+
+            Propietario pro = new Propietario();
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                string sql = @"SELECT * FROM Propietario WHERE pro_id = @id ;";
+
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                {
+                    comm.Parameters.AddWithValue("@id", id);
+                    
+                    conn.Open();
+                    
+                    var reader = comm.ExecuteReader();
+                    
+                    if (reader.Read()) {
+                        pro.pro_id = reader.GetInt32(0);
+                        pro.pro_dni = reader.GetString(1);
+                        pro.pro_nombre = reader.GetString(2);
+                        pro.pro_fechanac = reader.GetDateTime(3);
+                        pro.pro_direc = reader.GetString(4);
+                        pro.pro_telef = reader.GetString(5);
+                        pro.pro_email = reader.GetString(6);
+                    }
+                    
+                    conn.Close();
+                }
+            }
+
+            return pro;
+        }
     }
     
 }

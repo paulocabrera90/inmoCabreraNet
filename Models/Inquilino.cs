@@ -7,18 +7,18 @@ namespace inmoCabreraNet.Models
 {
     public class Inquilino
     {
-        public int Id { get; set; }
-        public string Dni { get; set; }
-        public string Nombre { get; set; }
-        public DateTime FechaN { get; set; }
-        public string DireccionTrabajo { get; set; }
-        public string Telefono { get; set; }
-        public string Email { get; set; }
+        public int inq_id { get; set; }
+        public string inq_dni { get; set; }
+        public string inq_nombre { get; set; }
+        public DateTime inq_fechanac { get; set; }
+        public string inq_domicilioTrabajo { get; set; }
+        public string inq_telef { get; set; }
+        public string inq_email { get; set; }
 
         // Garante
-        public string DniGarante { get; set; }
-        public string NombreGarante { get; set; }
-        public string TelefonoGarante { get; set; }
-        public string EmailGarante { get; set; }
+       // public string DniGarante { get; set; }
+//        public string NombreGarante { get; set; }
+     //   public string TelefonoGarante { get; set; }
+    //    public string EmailGarante { get; set; }
     }
 }

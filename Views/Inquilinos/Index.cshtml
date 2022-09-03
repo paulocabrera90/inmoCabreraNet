@@ -13,37 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(model => model.inq_id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dni)
+                @Html.DisplayNameFor(model => model.inq_nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.inq_dni)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaN)
+                @Html.DisplayNameFor(model => model.inq_fechanac)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DireccionTrabajo)
+                @Html.DisplayNameFor(model => model.inq_domicilioTrabajo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefono)
+                @Html.DisplayNameFor(model => model.inq_telef)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DniGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelefonoGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailGarante)
+                @Html.DisplayNameFor(model => model.inq_email)
             </th>
             <th></th>
         </tr>
@@ -52,42 +40,30 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.inq_id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Dni)
+                @Html.DisplayFor(modelItem => item.inq_dni)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => item.inq_nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaN)
+                @Html.DisplayFor(modelItem => item.inq_fechanac)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DireccionTrabajo)
+                @Html.DisplayFor(modelItem => item.inq_domicilioTrabajo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
+                @Html.DisplayFor(modelItem => item.inq_telef)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.inq_email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DniGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailGarante)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { id=item.inq_id }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { id=item.inq_id })
             </td>
         </tr>
 }
