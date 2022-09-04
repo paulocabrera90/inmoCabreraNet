@@ -1,7 +1,7 @@
 @model inmoCabreraNet.Models.Inquilino
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles Inquilino";
 }
 
 <h1>Detalles del Inquilino</h1>
@@ -50,6 +50,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id= Model.inq_id }) |
+    @Html.ActionLink("Edit", "Edit", new {    id= Model.inq_id }) |
     <a asp-action="Index">Back to List</a>
 </div>

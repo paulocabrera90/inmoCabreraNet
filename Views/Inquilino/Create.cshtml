@@ -1,50 +1,50 @@
 @model inmoCabreraNet.Models.Inquilino
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Nuevo Inquilino";
 }
 
-<h1>Editar</h1>
+<h1>Nuevo Inquilino</h1>
 
 <h4>Inquilino</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
-             <div class="form-group">
-                <label class="control-label">DNI</label>
+           
+            <div class="form-group">
+                <label asp-for="inq_dni" class="control-label"></label>
                 <input asp-for="inq_dni" class="form-control" />
                 <span asp-validation-for="inq_dni" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Nombre</label>
+                <label asp-for="inq_nombre" class="control-label"></label>
                 <input asp-for="inq_nombre" class="form-control" />
                 <span asp-validation-for="inq_nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Fecha Nacimiento</label>
-                <input asp-for="inq_fechanac" type="date" class="form-control" />
+                <label asp-for="inq_fechanac" class="control-label"></label>
+                <input asp-for="inq_fechanac" class="form-control" />
                 <span asp-validation-for="inq_fechanac" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Direccion de trabajo</label>
+                <label asp-for="inq_domicilioTrabajo" class="control-label"></label>
                 <input asp-for="inq_domicilioTrabajo" class="form-control" />
                 <span asp-validation-for="inq_domicilioTrabajo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Telefono</label>
+                <label asp-for="inq_telef" class="control-label"></label>
                 <input asp-for="inq_telef" class="form-control" />
                 <span asp-validation-for="inq_telef" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Email</label>
+                <label asp-for="inq_email" class="control-label"></label>
                 <input asp-for="inq_email" class="form-control" />
                 <span asp-validation-for="inq_email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary boton-form" />
+                <input type="submit" value="Create" class="btn btn-primary boton-form" />
             </div>
         </form>
     </div>
