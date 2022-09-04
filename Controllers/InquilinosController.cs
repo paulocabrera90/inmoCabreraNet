@@ -54,7 +54,7 @@ namespace inmoCabreraNet.Controllers {
 
                  var i = repoInqui.FindByPrimaryKey(id);
                 if (i.inq_id > 0)
-                { TempData["msg"] = "Se encontro.";
+                { TempData["msg"] = "Se encontró.";
                     return View(i);
                 }
                 else

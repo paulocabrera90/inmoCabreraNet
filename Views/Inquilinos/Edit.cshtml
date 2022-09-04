@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <h4>Inquilino</h4>
 <hr />
@@ -13,33 +13,33 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
           
-            <div class="form-group">
-                <label asp-for="inq_dni" class="control-label"></label>
+             <div class="form-group">
+                <label class="control-label">DNI</label>
                 <input asp-for="inq_dni" class="form-control" />
                 <span asp-validation-for="inq_dni" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="inq_nombre" class="control-label"></label>
+                <label class="control-label">Nombre</label>
                 <input asp-for="inq_nombre" class="form-control" />
                 <span asp-validation-for="inq_nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="inq_fechanac" class="control-label"></label>
-                <input asp-for="inq_fechanac" class="form-control" />
+                <label class="control-label">Fecha Nacimiento</label>
+                <input asp-for="inq_fechanac" type="date" class="form-control" />
                 <span asp-validation-for="inq_fechanac" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="inq_domicilioTrabajo" class="control-label"></label>
+                <label class="control-label">Direccion de trabajo</label>
                 <input asp-for="inq_domicilioTrabajo" class="form-control" />
                 <span asp-validation-for="inq_domicilioTrabajo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="inq_telef" class="control-label"></label>
+                <label class="control-label">Telefono</label>
                 <input asp-for="inq_telef" class="form-control" />
                 <span asp-validation-for="inq_telef" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="inq_email" class="control-label"></label>
+                <label class="control-label">Email</label>
                 <input asp-for="inq_email" class="form-control" />
                 <span asp-validation-for="inq_email" class="text-danger"></span>
             </div>

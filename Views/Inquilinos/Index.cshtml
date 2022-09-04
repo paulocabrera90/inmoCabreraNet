@@ -1,37 +1,25 @@
 @model IEnumerable<inmoCabreraNet.Models.Inquilino>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Inquilinos";
 }
 
-<h1>Index</h1>
+<h1>Lista de Inquilinos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nuevo Inquilino</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.inq_id)
+               DNI
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.inq_nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.inq_dni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.inq_fechanac)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.inq_domicilioTrabajo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.inq_telef)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.inq_email)
+                Email
             </th>
             <th></th>
         </tr>
@@ -39,30 +27,20 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.inq_id)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.inq_dni)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.inq_nombre)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.inq_fechanac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.inq_domicilioTrabajo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.inq_telef)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.inq_email)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.inq_id }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { id=item.inq_id }) |
                 @Html.ActionLink("Delete", "Delete", new { id=item.inq_id })
             </td>
         </tr>

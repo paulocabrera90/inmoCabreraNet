@@ -204,8 +204,8 @@ namespace inmoCabreraNet.Models {
                     if (reader.Read()) {
 
                         inq.inq_id = reader.GetInt32(0);
-                        inq.inq_nombre = reader.GetString(1);
-                        inq.inq_dni = reader.GetString(2);
+                        inq.inq_dni = reader.GetString(1);
+                        inq.inq_nombre = reader.GetString(2);                        
                         inq.inq_fechanac = reader.GetDateTime(3);
                         inq.inq_domicilioTrabajo = reader.GetString(4);
                         inq.inq_email = reader.GetString(5);

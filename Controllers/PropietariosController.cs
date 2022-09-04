@@ -21,7 +21,26 @@ namespace inmoCabreraNet.Controllers
         // GET: Propietarios/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            try {
+                // TODO: Add update logic here
+
+                var prop = repo.FindByPrimaryKey(id);
+                if (prop.pro_id > 0)
+                { TempData["msg"] = "Se encontró.";
+                    return View(prop);
+                }
+                else
+                {
+                    TempData["msg"] = "Error al abrir el Propietario. Intente nuevamente.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Propietarios/Create
@@ -59,7 +78,7 @@ namespace inmoCabreraNet.Controllers
 
                 var prop = repo.FindByPrimaryKey(id);
                 if (prop.pro_id > 0)
-                { TempData["msg"] = "Se encontro.";
+                { TempData["msg"] = "Se encontró.";
                     return View(prop);
                 }
                 else
@@ -94,8 +113,23 @@ namespace inmoCabreraNet.Controllers
 
         // GET: Propietarios/Delete/5
         public ActionResult Delete(int id) {
-           
-            return View();
+            try
+                {
+                   var pro = repo.FindByPrimaryKey(id);
+                if (pro.pro_id > 0)
+                {
+                    return View(pro);
+                }
+                else
+                {
+                    TempData["msg"] = "No se encontró Propietario. Intente nuevamente.";
+                    return RedirectToAction(nameof(Index));
+                }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
         }
 
         // POST: Propietarios/Delete/5
