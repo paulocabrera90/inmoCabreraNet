@@ -18,7 +18,26 @@ namespace inmoCabreraNet.Controllers {
 
         // GET: Inquilinos/Details/5
         public ActionResult Details(int id) {
-            return View();
+             try {
+                // TODO: Add update logic here
+
+                var inq = repoInqui.FindByPrimaryKey(id);
+                if (inq.inq_id > 0)
+                { TempData["msg"] = "Se encontró.";
+                    return View(inq);
+                }
+                else
+                {
+                    TempData["msg"] = "Error al abrir el Inquilino. Intente nuevamente.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Inquilinos/Create
@@ -52,10 +71,10 @@ namespace inmoCabreraNet.Controllers {
              try {
                 // TODO: Add update logic here
 
-                 var i = repoInqui.FindByPrimaryKey(id);
-                if (i.inq_id > 0)
+                 var inq = repoInqui.FindByPrimaryKey(id);
+                if (inq.inq_id > 0)
                 { TempData["msg"] = "Se encontró.";
-                    return View(i);
+                    return View(inq);
                 }
                 else
                 {
@@ -75,11 +94,27 @@ namespace inmoCabreraNet.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection) {
-              try
-            {
-                // TODO: Add update logic here
+              
+            Inquilino inq = new Inquilino();
+            inq.inq_id = id;
+            inq.inq_nombre = collection["inq_nombre"].ToString();
+            inq.inq_dni = collection["inq_dni"].ToString();
+            inq.inq_fechanac = DateTime.Parse(collection["inq_fechanac"].ToString());
+            inq.inq_domicilioTrabajo = collection["inq_domicilioTrabajo"].ToString();
+            inq.inq_email = collection["inq_email"].ToString();
+            inq.inq_telef = collection["inq_telef"].ToString();
 
-                return RedirectToAction(nameof(Index));
+            try
+            {
+                int res = repoInqui.Edit(inq);
+                if (res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch
             {
@@ -131,5 +166,7 @@ namespace inmoCabreraNet.Controllers {
                 return View();
             }
         }
+        
     }
+    
 }

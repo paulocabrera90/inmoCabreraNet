@@ -100,10 +100,31 @@ namespace inmoCabreraNet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection) {
             try
-            {
-                // TODO: Add update logic here
+                {  Propietario pro = new Propietario();
+                pro.pro_id = id;
+                pro.pro_nombre = collection["pro_nombre"].ToString();
+                pro.pro_dni = collection["pro_dni"].ToString();
+                pro.pro_fechanac = DateTime.Parse(collection["pro_fechanac"].ToString());
+                pro.pro_direc = collection["pro_direc"].ToString();
+                pro.pro_email = collection["pro_email"].ToString();
+                pro.pro_telef = collection["pro_telef"].ToString();
 
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    int res = repo.Edit(pro);
+                    if (res > 0)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                catch
+                {
+                    return View();
+                }
             }
             catch
             {

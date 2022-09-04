@@ -17,9 +17,9 @@ namespace inmoCabreraNet.Models {
             int res = -1;
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string sql = @"UPDATE Inquilino SET Nombre = @nombre , Dni = @dni , FechaN = @fecha_n , 
-                            DomicilioTrabajo = @domicilio , Email = @email , Telefono = @telefono 
-                            WHERE id = @id ;";
+                string sql = @"UPDATE Inquilino SET inq_nombre = @nombre , inq_dni = @dni , inq_fechanac = @fecha_n , 
+                            inq_domicilioTrabajo = @domicilio , inq_email = @email , inq_telef = @telefono 
+                            WHERE inq_id = @id ;";
 
                 using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
@@ -27,7 +27,7 @@ namespace inmoCabreraNet.Models {
                     comm.Parameters.AddWithValue("@nombre", inq.inq_nombre);
                     comm.Parameters.AddWithValue("@dni", inq.inq_dni);
                     comm.Parameters.AddWithValue("@fecha_n", inq.inq_fechanac);
-                    comm.Parameters.AddWithValue("@Domicilio", inq.inq_domicilioTrabajo);
+                    comm.Parameters.AddWithValue("@domicilio", inq.inq_domicilioTrabajo);
                     comm.Parameters.AddWithValue("@email", inq.inq_email);
                     comm.Parameters.AddWithValue("@telefono", inq.inq_telef);
                      comm.Parameters.AddWithValue("@id", inq.inq_id);
@@ -57,45 +57,13 @@ namespace inmoCabreraNet.Models {
             return res;
         }
 
-        public Inquilino Details(int id)
-        {
-            Inquilino inq = new Inquilino();
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                string sql = @"SELECT Id, Nombre, Dni, FechaN, DomicilioTrabajo, Email, Telefono 
-                                FROM Inquilino WHERE Id = @id ;";
-
-                using (MySqlCommand comm = new MySqlCommand(sql, conn))
-                {
-                    comm.Parameters.AddWithValue("@id", id);
-
-                    conn.Open();
-                    var reader = comm.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        inq.inq_id = reader.GetInt32(0);
-                        inq.inq_nombre = reader.GetString(1);
-                        inq.inq_dni = reader.GetString(2);
-                        inq.inq_fechanac = reader.GetDateTime(3);
-                        inq.inq_domicilioTrabajo = reader.GetString(4);
-                        inq.inq_email = reader.GetString(5);
-                        inq.inq_telef = reader.GetString(6);
-                    }
-
-                    conn.Close();
-
-                }
-            }
-            return inq;
-        }
 
         public Inquilino Details(string dni)
         {
             Inquilino inq = new Inquilino();
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string sql = @"SELECT Id, Nombre, Dni, FechaN, DomicilioTrabajo, Email, Telefono 
+                string sql = @"SELECT * 
                                 FROM Inquilino WHERE Dni = @dni ;";
 
                 using (MySqlCommand comm = new MySqlCommand(sql, conn))
@@ -208,8 +176,8 @@ namespace inmoCabreraNet.Models {
                         inq.inq_nombre = reader.GetString(2);                        
                         inq.inq_fechanac = reader.GetDateTime(3);
                         inq.inq_domicilioTrabajo = reader.GetString(4);
-                        inq.inq_email = reader.GetString(5);
-                        inq.inq_telef = reader.GetString(6);
+                        inq.inq_telef = reader.GetString(5);
+                        inq.inq_email = reader.GetString(6);
                     }
                     
                     conn.Close();
