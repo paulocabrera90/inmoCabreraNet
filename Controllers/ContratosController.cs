@@ -4,15 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using inmoCabreraNet.Models;
 
-namespace inmobiliaria.Controllers
+namespace inmoCabreraNet.Controllers
 {
     public class ContratosController : Controller
     {
+        RepoContrato repoCon = new RepoContrato();
         // GET: Contratos
         public ActionResult Index()
         {
-            return View();
+            IList<Contrato> lista = repoCon.All();
+            return View(lista);
         }
 
         // GET: Contratos/Details/5
