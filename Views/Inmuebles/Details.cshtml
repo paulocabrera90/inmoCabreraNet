@@ -1,0 +1,84 @@
+@model inmoCabreraNet.Models.Contrato
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_inm_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_inm_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_inq_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_inq_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_fecdesde)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_fecdesde)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_fechasta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_fechasta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_dniGarante)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_dniGarante)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_nombreGarante)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_nombreGarante)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_telefonoGarante)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_telefonoGarante)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_emailGarante)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_emailGarante)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.con_valido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.con_valido)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValidoNombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ValidoNombre)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

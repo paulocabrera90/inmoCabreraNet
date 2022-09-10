@@ -1,0 +1,95 @@
+@model IEnumerable<inmoCabreraNet.Models.Contrato>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.con_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_inm_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_inq_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_fecdesde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_fechasta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_dniGarante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_nombreGarante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_telefonoGarante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_emailGarante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.con_valido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValidoNombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_inm_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_inq_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_fecdesde)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_fechasta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_dniGarante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_nombreGarante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_telefonoGarante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_emailGarante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_valido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValidoNombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

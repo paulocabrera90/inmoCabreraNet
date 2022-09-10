@@ -1,0 +1,83 @@
+@model inmoCabreraNet.Models.Contrato
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Contrato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="con_id" class="control-label"></label>
+                <input asp-for="con_id" class="form-control" />
+                <span asp-validation-for="con_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_inm_id" class="control-label"></label>
+                <input asp-for="con_inm_id" class="form-control" />
+                <span asp-validation-for="con_inm_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_inq_id" class="control-label"></label>
+                <input asp-for="con_inq_id" class="form-control" />
+                <span asp-validation-for="con_inq_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_fecdesde" class="control-label"></label>
+                <input asp-for="con_fecdesde" class="form-control" />
+                <span asp-validation-for="con_fecdesde" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_fechasta" class="control-label"></label>
+                <input asp-for="con_fechasta" class="form-control" />
+                <span asp-validation-for="con_fechasta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_dniGarante" class="control-label"></label>
+                <input asp-for="con_dniGarante" class="form-control" />
+                <span asp-validation-for="con_dniGarante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_nombreGarante" class="control-label"></label>
+                <input asp-for="con_nombreGarante" class="form-control" />
+                <span asp-validation-for="con_nombreGarante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_telefonoGarante" class="control-label"></label>
+                <input asp-for="con_telefonoGarante" class="form-control" />
+                <span asp-validation-for="con_telefonoGarante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="con_emailGarante" class="control-label"></label>
+                <input asp-for="con_emailGarante" class="form-control" />
+                <span asp-validation-for="con_emailGarante" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="con_valido" /> @Html.DisplayNameFor(model => model.con_valido)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidoNombre" class="control-label"></label>
+                <input asp-for="ValidoNombre" class="form-control" />
+                <span asp-validation-for="ValidoNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
