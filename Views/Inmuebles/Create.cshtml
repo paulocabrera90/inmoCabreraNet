@@ -1,4 +1,4 @@
-@model inmoCabreraNet.Models.Contrato
+@model inmoCabreraNet.Models.Inmueble
 
 @{
     ViewData["Title"] = "Create";
@@ -6,66 +6,63 @@
 
 <h1>Create</h1>
 
-<h4>Contrato</h4>
+<h4>Inmueble</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="con_id" class="control-label"></label>
-                <input asp-for="con_id" class="form-control" />
-                <span asp-validation-for="con_id" class="text-danger"></span>
+                <label asp-for="inm_direccion" class="control-label">Direccion</label>
+                <input asp-for="inm_direccion" class="form-control" />
+                <span asp-validation-for="inm_direccion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="con_inm_id" class="control-label"></label>
-                <input asp-for="con_inm_id" class="form-control" />
-                <span asp-validation-for="con_inm_id" class="text-danger"></span>
+                <label asp-for="inm_tipo" class="control-label">Tipo</label>
+                <input asp-for="inm_tipo" class="form-control" />
+                <span asp-validation-for="inm_tipo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="con_inq_id" class="control-label"></label>
-                <input asp-for="con_inq_id" class="form-control" />
-                <span asp-validation-for="con_inq_id" class="text-danger"></span>
+                <label asp-for="inm_uso" class="control-label">Uso</label>
+                <input asp-for="inm_uso" class="form-control" />
+                <span asp-validation-for="inm_uso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="con_fecdesde" class="control-label"></label>
-                <input asp-for="con_fecdesde" class="form-control" />
-                <span asp-validation-for="con_fecdesde" class="text-danger"></span>
+                <label asp-for="usoNombre" class="control-label">Nombre</label>
+                <input asp-for="usoNombre" class="form-control" />
+                <span asp-validation-for="usoNombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="con_fechasta" class="control-label"></label>
-                <input asp-for="con_fechasta" class="form-control" />
-                <span asp-validation-for="con_fechasta" class="text-danger"></span>
+                <label asp-for="inm_ambientes" class="control-label">Amientes</label>
+                <input asp-for="inm_ambientes" class="form-control" />
+                <span asp-validation-for="inm_ambientes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="con_dniGarante" class="control-label"></label>
-                <input asp-for="con_dniGarante" class="form-control" />
-                <span asp-validation-for="con_dniGarante" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="con_nombreGarante" class="control-label"></label>
-                <input asp-for="con_nombreGarante" class="form-control" />
-                <span asp-validation-for="con_nombreGarante" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="con_telefonoGarante" class="control-label"></label>
-                <input asp-for="con_telefonoGarante" class="form-control" />
-                <span asp-validation-for="con_telefonoGarante" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="con_emailGarante" class="control-label"></label>
-                <input asp-for="con_emailGarante" class="form-control" />
-                <span asp-validation-for="con_emailGarante" class="text-danger"></span>
+                <label asp-for="inm_precio" class="control-label">Precio</label>
+                <input asp-for="inm_precio" class="form-control" />
+                <span asp-validation-for="inm_precio" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="con_valido" /> @Html.DisplayNameFor(model => model.con_valido)
+                <label class="form-check-label"> Disponible
+                    <input class="form-check-input" asp-for="inm_disponible" />
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="ValidoNombre" class="control-label"></label>
-                <input asp-for="ValidoNombre" class="form-control" />
-                <span asp-validation-for="ValidoNombre" class="text-danger"></span>
+                <label asp-for="disponibleNombre" class="control-label"></label>
+                <input asp-for="disponibleNombre" class="form-control" />
+                <span asp-validation-for="disponibleNombre" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="inm_pro_id" class="control-label"></label>
+                <select class="form-control" name="inm_pro_id">
+                    @foreach (var p in (IList<Propietario>)ViewBag.Propietarios)
+                    {
+                        <option value="@p.pro_id">
+                            @p.pro_nombre
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="inm_pro_id" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

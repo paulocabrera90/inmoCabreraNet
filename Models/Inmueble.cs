@@ -24,13 +24,13 @@ namespace inmoCabreraNet.Models
         public string inm_direccion { get; set; }
         public int inm_tipo { get; set; }
         public int inm_uso { get; set; }
-        public string UsoNombre => inm_uso > 0 ? ((enUsos)inm_uso).ToString() : "";
+        public string usoNombre => inm_uso > 0 ? ((enUsos)inm_uso).ToString() : "";
         public int inm_ambientes { get; set; }
         public decimal inm_precio { get; set; }
         public bool inm_disponible { get; set; }
-        public string DisponibleNombre => inm_disponible ? "Sí" : "No";
+        public string disponibleNombre => inm_disponible ? "Sí" : "No";
         public int inm_pro_id { get; set; }
 
-        public Propietario Propietario { get; set; }
+        public Propietario propietario { get; set; }
     }
 }

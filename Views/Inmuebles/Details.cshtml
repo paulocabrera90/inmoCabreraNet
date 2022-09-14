@@ -1,4 +1,4 @@
-@model inmoCabreraNet.Models.Contrato
+@model inmoCabreraNet.Models.Inmueble
 
 @{
     ViewData["Title"] = "Details";
@@ -7,74 +7,68 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Contrato</h4>
+    <h4>Inmueble</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_id)
+            @Html.DisplayNameFor(model => model.inm_id)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_id)
+            @Html.DisplayFor(model => model.inm_id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_inm_id)
+            @Html.DisplayNameFor(model => model.inm_direccion)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_inm_id)
+            @Html.DisplayFor(model => model.inm_direccion)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_inq_id)
+            @Html.DisplayNameFor(model => model.inm_tipo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_inq_id)
+            @Html.DisplayFor(model => model.inm_tipo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_fecdesde)
+            @Html.DisplayNameFor(model => model.inm_uso)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_fecdesde)
+            @Html.DisplayFor(model => model.inm_uso)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_fechasta)
+            @Html.DisplayNameFor(model => model.usoNombre)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_fechasta)
+            @Html.DisplayFor(model => model.usoNombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_dniGarante)
+            @Html.DisplayNameFor(model => model.inm_ambientes)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_dniGarante)
+            @Html.DisplayFor(model => model.inm_ambientes)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_nombreGarante)
+            @Html.DisplayNameFor(model => model.inm_precio)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_nombreGarante)
+            @Html.DisplayFor(model => model.inm_precio)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_telefonoGarante)
+            @Html.DisplayNameFor(model => model.inm_disponible)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_telefonoGarante)
+            @Html.DisplayFor(model => model.inm_disponible)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_emailGarante)
+            @Html.DisplayNameFor(model => model.disponibleNombre)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_emailGarante)
+            @Html.DisplayFor(model => model.disponibleNombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.con_valido)
+            @Html.DisplayNameFor(model => model.inm_pro_id)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.con_valido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ValidoNombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ValidoNombre)
+            @Html.DisplayFor(model => model.inm_pro_id)
         </dd>
     </dl>
 </div>

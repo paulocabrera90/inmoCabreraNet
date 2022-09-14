@@ -1,89 +1,67 @@
-@model IEnumerable<inmoCabreraNet.Models.Contrato>
+@model IEnumerable<inmoCabreraNet.Models.Inmueble>
 
 @{
-    ViewData["Title"] = "Lista de Inmuebles";
+    ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-secondary" asp-action="Create"><i class="far fa-plus-square"></i> Cargar Nuevo</a>
+    <a class="btn btn-secondary" asp-action="Index" asp-route-id="0"><i class="fas fa-hotel"></i> Todos</a>
+    <a class="btn btn-secondary" asp-action="Index" asp-route-id="1"><i class="fas fa-hotel"></i> Disponibles</a>
+    <a class="btn btn-secondary" asp-action="Availables"><i class="fas fa-hotel"></i> Consultar por Fechas</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+       <tr>
+
             <th>
-                @Html.DisplayNameFor(model => model.con_id)
+                Direccion
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.con_inm_id)
+                Tipo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.con_inq_id)
+                Uso
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_fecdesde)
+            <th width="40">
+                Amb.
+                @*@Html.DisplayNameFor(model => model.Ambientes)*@
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_fechasta)
+            <th width="40">
+                Disp.
+                @*@Html.DisplayNameFor(model => model.Disponible)*@
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_dniGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_nombreGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_telefonoGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_emailGarante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.con_valido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValidoNombre)
-            </th>
-            <th></th>
+             <td>
+                 <a asp-action="Details" asp-controller="Propietarios" asp-route-id="@item.Propietario.pro_nombre">@item.Propietario.pro_nombre</a>
+                 @*@Html.DisplayFor(modelItem => item.Propietario.pro_nombre)*@
+            </td>
+            <th width="90"></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.con_id)
+                @Html.DisplayFor(modelItem => item.inm_direccion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.con_inm_id)
+                @Html.DisplayFor(modelItem => item.inm_tipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.con_inq_id)
+                @Html.DisplayFor(modelItem => item.inm_uso)
+            </td>
+             <td >
+                @Html.DisplayFor(modelItem => item.inm_ambientes)
+            </td>
+             <td >
+                @Html.DisplayFor(modelItem => item.inm_disponible)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.con_fecdesde)
+                @Html.DisplayFor(modelItem => item.disponibleNombre)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.con_fechasta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.con_dniGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.con_nombreGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.con_telefonoGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.con_emailGarante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.con_valido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValidoNombre)
-            </td>
+             
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
