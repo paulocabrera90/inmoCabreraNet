@@ -25,18 +25,19 @@
             <th>
                 Uso
             </th>
-            <th width="40">
+            <th >
                 Amb.
                 @*@Html.DisplayNameFor(model => model.Ambientes)*@
             </th>
-            <th width="40">
+            <th >
                 Disp.
                 @*@Html.DisplayNameFor(model => model.Disponible)*@
             </th>
-             <td>
-                 <a asp-action="Details" asp-controller="Propietarios" asp-route-id="@item.Propietario.pro_nombre">@item.Propietario.pro_nombre</a>
-                 @*@Html.DisplayFor(modelItem => item.Propietario.pro_nombre)*@
-            </td>
+              <th>
+                Propietarios
+                @*Html.DisplayNameFor(model => model.Propietario)*@
+            </th>
+             
             <th width="90"></th>
         </tr>
     </thead>
@@ -61,9 +62,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.disponibleNombre)
             </td>
+            <td>
+                 <a asp-action="Details" asp-controller="Propietarios" asp-route-id="@item.propietario.pro_nombre">@item.propietario.pro_nombre</a>
+                 @*@Html.DisplayFor(modelItem => item.Propietario.pro_nombre)*@
+            </td>
              
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new {  id=item.inm_id }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

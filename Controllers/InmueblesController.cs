@@ -11,6 +11,7 @@ namespace inmoCabreraNet.Controllers
     public class InmueblesController : Controller
     {
         RepoInmueble repoInm = new RepoInmueble();
+        RepoPropietario repoPropietario = new RepoPropietario();
         // GET: Inmueble
         public ActionResult Index()
         {
@@ -27,7 +28,10 @@ namespace inmoCabreraNet.Controllers
         // GET: Inmueble/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Propietarios = repoPropietario.All();
+                // TODO: Add insert logic here
+
+                 return View();
         }
 
         // POST: Inmueble/Create
@@ -36,7 +40,8 @@ namespace inmoCabreraNet.Controllers
         public ActionResult Create(IFormCollection collection)
         {
             try
-            {
+            {    
+                ViewBag.Propietarios = repoPropietario.All();
                 // TODO: Add insert logic here
 
                 return RedirectToAction(nameof(Index));
@@ -48,9 +53,21 @@ namespace inmoCabreraNet.Controllers
         }
 
         // GET: Inmueble/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+        public ActionResult Edit(int id) {
+           try{
+                var propietarios = repoPropietario.All();
+                if(propietarios.Count != 0){
+                    TempData["msg"] = "No se pudo obtener los propietarioss. Intente nuevamente"
+                    return RedirectToAction(nameof(Index));              
+                }
+
+                ViewBag.Propietarios = propietarios;
+
+                var i = repoInm.FindByPrimaryKey(id);
+           }
+           catch (Exception e){
+                throw;
+           }
         }
 
         // POST: Inmueble/Edit/5

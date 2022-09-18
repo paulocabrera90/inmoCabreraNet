@@ -16,20 +16,20 @@ namespace inmoCabreraNet.Models {
               using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 string sql = @"SELECT 
-                                    i.inm_id, 
-                                    i.inm_direccion, 
-                                    i.inm_tipo, 
-                                    i.inm_uso, 
-                                    i.inm_ambientes, 
-                                    i.inm_precio, 
-                                    i.inm_disponible, 
-                                    i.inm_pro_idinmueble, 
-                                    p.pro_nombre, 
-                                    p.pro_dni, 
-                                    p.pro_email 
-                               FROM Inmueble i 
-                               INNER JOIN Propietario p
-                                ON i.IdPropietario = p.Id;";
+                                    inm.inm_id, 
+                                    inm.inm_direccion, 
+                                    inm.inm_tipo, 
+                                    inm.inm_uso, 
+                                    inm.inm_ambientes, 
+                                    inm.inm_precio, 
+                                    inm.inm_disponible, 
+                                    inm.inm_pro_id, 
+                                    pro.pro_nombre, 
+                                    pro.pro_dni, 
+                                    pro.pro_email 
+                               FROM Inmueble inm
+                               INNER JOIN Propietario pro
+                                ON inm.inm_pro_id = pro.pro_id;";
 
                 using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {
@@ -64,6 +64,34 @@ namespace inmoCabreraNet.Models {
                 }
             }
             return list;
+        }
+
+        public Inmueble FindByPrimaryKey(int id) {
+            Inmueble inm = new Inmueble();
+            Propietario pro = new Propietario();
+            
+            using (MySqlConnection conn = new MySqlConnection(connectionString)){
+                string sql = @"SELECT 
+                                    inm.inm_id, 
+                                    inm.inm_direccion, 
+                                    inm.inm_tipo, 
+                                    inm.inm_uso, 
+                                    inm.inm_ambientes, 
+                                    inm.inm_precio, 
+                                    inm.inm_disponible, 
+                                    inm.inm_pro_id, 
+                                    pro.pro_nombre, 
+                                    pro.pro_dni, 
+                                    pro.pro_email 
+                               FROM Inmueble inm
+                               INNER JOIN Propietario pro
+                                ON inm.inm_pro_id = pro.pro_id;
+                                WHERE inm.inm_id = @id";
+
+                using (MySqlCommand comm = new MySqlCommand(sql, conn))
+            }
+            
+            return inm;
         }
         
     }

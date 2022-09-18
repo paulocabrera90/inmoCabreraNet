@@ -14,7 +14,15 @@ namespace inmoCabreraNet.Models {
          public IList<Propietario> All() {
             IList<Propietario> list = new List<Propietario>();
             using (MySqlConnection conn = new MySqlConnection(connectionString)){
-                string sql = @"SELECT * FROM propietario";
+                string sql = @"SELECT 
+                                    pro_id,
+                                    pro_dni,
+                                    pro_nombre,
+                                    pro_fechanac,
+                                    pro_direc,
+                                    pro_telef,
+                                    pro_email
+                               FROM propietario";
 
                  using (MySqlCommand comm = new MySqlCommand(sql, conn)) {
                     conn.Open();
@@ -22,8 +30,8 @@ namespace inmoCabreraNet.Models {
                     while (reader.Read()) {
                         var pro = new Propietario {
                             pro_id = reader.GetInt32(0),
-                            pro_nombre = reader.GetString(1),
-                            pro_dni= reader.GetString(2),
+                            pro_dni = reader.GetString(1),
+                            pro_nombre= reader.GetString(2),
                             pro_fechanac = reader.GetDateTime(3),
                             pro_direc = reader.GetString(4),
                             pro_telef = reader.GetString(5),
@@ -88,7 +96,15 @@ namespace inmoCabreraNet.Models {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string sql = @"SELECT * FROM Propietario WHERE pro_id = @id ;";
+                string sql = @"SELECT 
+                                    pro_id,
+                                    pro_dni,
+                                    pro_nombre,
+                                    pro_fechanac,
+                                    pro_direc,
+                                    pro_telef,
+                                    pro_email
+                             FROM Propietario WHERE pro_id = @id ;";
 
                 using (MySqlCommand comm = new MySqlCommand(sql, conn))
                 {

@@ -53,7 +53,7 @@
                 <span asp-validation-for="disponibleNombre" class="text-danger"></span>
             </div>
               <div class="form-group">
-                <label asp-for="inm_pro_id" class="control-label"></label>
+                <label asp-for="inm_pro_id" class="control-label">Propietarios</label>
                 <select class="form-control" name="inm_pro_id">
                     @foreach (var p in (IList<Propietario>)ViewBag.Propietarios)
                     {
