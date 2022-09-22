@@ -56,17 +56,27 @@ namespace inmoCabreraNet.Controllers
         public ActionResult Edit(int id) {
            try{
                 var propietarios = repoPropietario.All();
-                if(propietarios.Count != 0){
-                    TempData["msg"] = "No se pudo obtener los propietarioss. Intente nuevamente"
+                if(propietarios.Count == 0){
+
+                    TempData["msg"] = "No se pudo obtener los propietarioss. Intente nuevamente";
                     return RedirectToAction(nameof(Index));              
                 }
-
+              
                 ViewBag.Propietarios = propietarios;
 
                 var i = repoInm.FindByPrimaryKey(id);
+                
+                if(i.inm_id > 0){         
+                    ViewBag.Tipos = Inmueble.ObtenerTipos();
+                    ViewBag.Usos = Inmueble.ObtenerUsos();          
+                    return View(i);
+                } else {
+                    return RedirectToAction(nameof(Index));
+                }
            }
-           catch (Exception e){
-                throw;
+           catch (Exception ){
+               throw;
+                
            }
         }
 
@@ -78,7 +88,7 @@ namespace inmoCabreraNet.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                TempData["msg"] = "No se encontró Inmueble. Intente nuevamente.";
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -85,12 +85,33 @@ namespace inmoCabreraNet.Models {
                                     pro.pro_email 
                                FROM Inmueble inm
                                INNER JOIN Propietario pro
-                                ON inm.inm_pro_id = pro.pro_id;
-                                WHERE inm.inm_id = @id";
+                                ON inm.inm_pro_id = pro.pro_id
+                                WHERE inm.inm_id = @id;";
 
-                using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                using (MySqlCommand comm = new MySqlCommand(sql, conn)){
+                    comm.Parameters.AddWithValue("@id", id);
+
+                    conn.Open();
+
+                    var reader = comm.ExecuteReader();
+
+                    if(reader.Read()){
+                        inm.inm_id = reader.GetInt32(0);
+                        inm.inm_direccion = reader.GetString(1);
+                        inm.inm_tipo = reader.GetInt32(2);
+                        inm.inm_uso = reader.GetInt32(3);
+                        inm.inm_ambientes = reader.GetInt32(4);
+                        inm.inm_precio = reader.GetDecimal(5);
+                        inm.inm_disponible = reader.GetBoolean(6);
+                        inm.inm_pro_id = reader.GetInt32(7);
+                        pro.pro_nombre = reader.GetString(8);
+                        pro.pro_dni = reader.GetString(9);
+                        pro.pro_email = reader.GetString(10);
+                        inm.propietario = pro;
+                    }
+                }
             }
-            
+           
             return inm;
         }
         
