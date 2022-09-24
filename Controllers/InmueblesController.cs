@@ -66,7 +66,17 @@ namespace inmoCabreraNet.Controllers
 
                 var i = repoInm.FindByPrimaryKey(id);
                 
-                if(i.inm_id > 0){         
+                if(i.inm_id > 0){        
+                    var isTaken = repoInm.isTaken(i.inm_id);
+                    if (isTaken)
+                    {
+                        ViewBag.IsTaken = true;
+                    }
+                    else
+                    {
+                        ViewBag.IsTaken = false;
+                    }
+ 
                     ViewBag.Tipos = Inmueble.ObtenerTipos();
                     ViewBag.Usos = Inmueble.ObtenerUsos();          
                     return View(i);
@@ -83,18 +93,31 @@ namespace inmoCabreraNet.Controllers
         // POST: Inmueble/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Inmueble i)
         {
-            try
-            {
-                // TODO: Add update logic here
-                TempData["msg"] = "No se encontró Inmueble. Intente nuevamente.";
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+           if (ModelState.IsValid)
+                {
+                    i.inm_id = id;
+
+                    var isTaken = repoInm.isTaken(id);
+
+                    var res = repoInm.Edit(i, isTaken);
+                    if (res > 0)
+                    {
+                        TempData["msg"] = "Cambios guardados.";
+                        return RedirectToAction(nameof(Edit), new { id = id });
+                    }
+                    else
+                    {
+                        TempData["msg"] = "No se guardaron los cambios. Intente nuevamente.";
+                        return RedirectToAction(nameof(Edit), new { id = id });
+                    }
+                }
+                else
+                {
+                    TempData["msg"] = "Los datos ingresados no son v�lidos. Intente nuevamente.";
+                    return RedirectToAction(nameof(Edit), new { id = id });
+                }
         }
 
         // GET: Inmueble/Delete/5

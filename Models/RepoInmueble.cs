@@ -44,7 +44,7 @@ namespace inmoCabreraNet.Models {
                             inm_tipo = reader.GetInt32(2),
                             inm_uso = reader.GetInt32(3),
                             inm_ambientes = reader.GetInt32(4),
-                            inm_precio = reader.GetDecimal(5),
+                            inm_precio = reader.GetDouble(5),
                             inm_disponible = reader.GetBoolean(6),
                             inm_pro_id = reader.GetInt32(7),
                         };
@@ -101,7 +101,7 @@ namespace inmoCabreraNet.Models {
                         inm.inm_tipo = reader.GetInt32(2);
                         inm.inm_uso = reader.GetInt32(3);
                         inm.inm_ambientes = reader.GetInt32(4);
-                        inm.inm_precio = reader.GetDecimal(5);
+                        inm.inm_precio = reader.GetDouble(5);
                         inm.inm_disponible = reader.GetBoolean(6);
                         inm.inm_pro_id = reader.GetInt32(7);
                         pro.pro_nombre = reader.GetString(8);
@@ -115,5 +115,78 @@ namespace inmoCabreraNet.Models {
             return inm;
         }
         
+        public bool isTaken(int id){
+            bool flag= false;
+
+            string sql = @"SELECT 
+                            con.con_id 
+                        FROM contrato con 
+                        WHERE 
+                            con.con_inm_id = @id 
+                            AND con.con_valido = 1 
+                            AND current_date() 
+                            BETWEEN con.con_fecdesde 
+                            AND con.con_fechasta;";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)) {
+                using (MySqlCommand comm = new MySqlCommand(sql, conn)) {
+                    comm.Parameters.AddWithValue("@id", id);
+                    conn.Open();
+                    var reader = comm.ExecuteReader();
+                    flag = (reader.HasRows) ? true : false;
+                    conn.Close();
+                }
+            }
+
+            return flag;
+        }
+    
+        public int Edit (Inmueble inm, bool isTaken){
+            int res =-1;
+
+            string sql = @"UPDATE inmueble
+                                SET 
+                                    inm_direccion = @direccion,
+                                    inm_tipo = @tipo,
+                                    inm_uso = @uso,
+                                    inm_ambientes = @ambientes,
+                                    inm_precio = @precio,
+                                    inm_disponible = @disponible
+                                    inm_pro_id = @pro_id
+                                WHERE inm_id = @id;";
+            if(isTaken){
+                     sql = @"UPDATE inmueble
+                                SET 
+                                    inm_direccion = @direccion,
+                                    inm_tipo = @tipo,
+                                    inm_uso = @uso,
+                                    inm_ambientes = @ambientes,
+                                    inm_precio = @precio,
+                                    inm_pro_id = @pro_id
+                                WHERE inm_id = @id;";
+            }
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString)){
+                 using (MySqlCommand comm = new MySqlCommand(sql, conn)){
+                     comm.Parameters.AddWithValue("@direccion", inm.inm_direccion);
+                    comm.Parameters.AddWithValue("@tipo", inm.inm_tipo);
+                    comm.Parameters.AddWithValue("@uso", inm.inm_uso);
+                    comm.Parameters.AddWithValue("@ambientes", inm.inm_ambientes);
+                    comm.Parameters.AddWithValue("@precio", inm.inm_precio);
+                    comm.Parameters.AddWithValue("@id_propietario",inm.inm_pro_id);
+                    comm.Parameters.AddWithValue("@id", inm.inm_id);
+                    if (!isTaken)
+                    {
+                        comm.Parameters.AddWithValue("@disponible", inm.inm_disponible);
+                    }
+
+                    conn.Open();
+                    res = Convert.ToInt32(comm.ExecuteNonQuery());
+                    conn.Close();
+                 }
+            }
+            return res;
+        }
+    
     }
 }
